@@ -1,0 +1,33 @@
+### ECONOMIC ORDER QUANTITY ###
+
+# Import required libraries
+import math
+
+A=float(input("Ordering cost 'A' is : ") )
+D=float(input("Demand rate 'λ' is : "))
+Ic=float(input("Inventory carrying cost 'Ic' is : ") )
+P=float(input("Production rate 'ψ' is : "))
+Pi=float(input("Shortage cost 'π' is : ") )
+
+
+
+if(P<=0 and Pi<=0): #MODEL 1
+  print("Model 1")
+  Q= math.sqrt(2*A*D/Ic)
+
+elif (Pi<=0): #MODEL 2
+  print("Model 2")
+  Q=math.sqrt((2*A*D*P)/((P-D)*Ic))
+
+elif (P<=0): #MODEL 3
+  print("Model 3")
+  Q= math.sqrt((2*A*D*(Ic+Pi))/(Ic*Pi))
+
+else : #MODEL 4
+  print("Model 4")
+  Q=math.sqrt((2*A*D*P*(Ic+Pi))/(Ic*Pi*(P-D)))
+
+Q=round(Q,3)
+
+# Run example
+print("The EOQ  value is " ,Q)
